@@ -1,0 +1,19 @@
+name: AOC2021
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Install Swift
+      uses: slashmo/install-swift@v0.1.0
+      with:
+        version: 5.5
+    - uses: actions/checkout@v2
+    - name: Run tests
+      run: swift test
