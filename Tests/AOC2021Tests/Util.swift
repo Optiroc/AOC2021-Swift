@@ -17,6 +17,8 @@ struct PuzzleInput {
     }
     
     static func getInts(name: String) throws -> [Int] {
-        return try getStrings(name: name).compactMap { Int($0) }
+        return try getStrings(name: name)
+            .flatMap { $0.split(separator: ",") }
+            .compactMap { Int($0) }
     }
 }
