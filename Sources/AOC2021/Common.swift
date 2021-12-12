@@ -14,3 +14,15 @@ extension Dictionary where Key: FixedWidthInteger, Value: AdditiveArithmetic {
         }
     }
 }
+
+extension Array where Element: SetAlgebra {
+    func intersection() -> Element {
+        if let first = self.first {
+            return self.dropFirst().reduce(into: first) {
+                $0 = $0.intersection($1)
+            }
+        } else {
+            return Element()
+        }
+    }
+}
